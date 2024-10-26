@@ -23,7 +23,8 @@ RED = (255, 0, 0)
 
 # Initialize screen
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("Halloween Candyland Adventure")
+pygame.display.set_caption("Phantom Quest!")
+
 
 # Font initialization
 try:
