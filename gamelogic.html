@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Board Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .card {
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Board Game</h1>
+        <div id="game-board"></div>
+        <button onclick="fetchCard()">Get Card</button>
+    </div>
+    <script>
+        async function fetchCard() {
+            const response = await fetch('/get_card');
+            const card = await response.json();
+            displayCard(card);
+        }
+
+        function displayCard(card) {
+            const gameBoard = document.getElementById('game-board');
+            const cardElement = document.createElement('div');
+            cardElement.className = 'card';
+            cardElement.innerHTML = `<h2>${card.title}</h2><p>${card.description}</p>`;
+            gameBoard.appendChild(cardElement);
+        }
+    </script>
+</body>
+</html>
